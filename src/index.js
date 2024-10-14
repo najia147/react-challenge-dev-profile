@@ -38,16 +38,16 @@ function Intro() {
 function SkillList() {
   return (
     <div className="space-y-4">
-      <Skill name="React" level="👌" />
-      <Skill name="JavaScript" level="💻" />
-      <Skill name="Tailwind CSS" level="🎨" />
+      <Skill name="React" level="👌" bgColor="bg-blue-100" />
+      <Skill name="JavaScript" level="💻" bgColor="bg-yellow-100" />
+      <Skill name="Tailwind CSS" level="🎨" bgColor="bg-green-100" />
     </div>
   );
 }
 
-function Skill({ name, level }) {
+function Skill({ name, level, bgColor }) {
   return (
-    <div className="bg-gray-50 shadow-inner rounded-lg p-4 flex justify-between items-center">
+    <div className={`${bgColor} shadow-inner rounded-lg p-4 flex justify-between items-center`}>
       <span className="text-lg font-semibold text-gray-800">{name}</span>
       <span>{level}</span>
     </div>
