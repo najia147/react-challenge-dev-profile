@@ -2,6 +2,39 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
+const skills = [
+  {
+    skill: "HTML+CSS",
+    level: "advanced",
+    color: "#2662EA"
+  },
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#EFD81D"
+  },
+  {
+    skill: "Web Design",
+    level: "advanced",
+    color: "#C3DCAF"
+  },
+  {
+    skill: "Git and Github",
+    level: "intermediate",
+    color: "#E84F33"
+  },
+  {
+    skill: "React",
+    level: "advanced",
+    color: "#60DAF8"
+  },
+  {
+    skill: "Sveltes",
+    level: "beginner",
+    color: "#EF3800"
+  },
+]
+
 function App() {
   return (
     <main className="bg-gray-100 min-h-screen flex items-center justify-center p-6">
@@ -18,8 +51,8 @@ function Avatar() {
   return (
     <img
       className="rounded-full w-24 h-24 shadow-md mb-4 mx-auto"
-      src='images/68281489.jpeg'
-      alt="Avatar"
+      src='images/mujeres-webdev'
+      alt="mujeres-webdev"
     />
   );
 }
@@ -38,18 +71,30 @@ function Intro() {
 function SkillList() {
   return (
     <div className="space-y-4">
-      <Skill name="React" level="👌" bgColor="bg-blue-100" />
-      <Skill name="JavaScript" level="💻" bgColor="bg-yellow-100" />
-      <Skill name="Tailwind CSS" level="🎨" bgColor="bg-green-100" />
+      {
+        skills.map(skill => (
+          <Skill skill={skill}/>
+        ))
+      }
     </div>
   );
 }
+// style={{props.bgColor}}
 
-function Skill({ name, level, bgColor }) {
+function Skill({ skill }) {
   return (
-    <div className={`${bgColor} shadow-inner rounded-lg p-4 flex justify-between items-center`}>
-      <span className="text-lg font-semibold text-gray-800">{name}</span>
-      <span>{level}</span>
+    <div className={`${skill.color} shadow-inner rounded-lg p-4 flex justify-between items-center`}>
+      <span className="text-lg font-semibold text-gray-800">{skill.skill}</span>
+      {
+        skill.level === "advanced" ? <span>{skill.level} 💪</span> : ""
+      }
+       {
+        skill.level === "intermediate" ? <span>{skill.level} 👍</span> : ""
+      }
+       {
+        skill.level === "beginner" ? <span>{skill.level} 🥺</span> : ""
+      }
+      
     </div>
   );
 }
